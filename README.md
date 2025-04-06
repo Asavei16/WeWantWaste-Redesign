@@ -79,7 +79,7 @@ Displays one skip option card:
 
 ## 🔗 Live Preview
 
-[👉 View on CodeSandbox](https://codesandbox.io/) *(replace with your own link after uploading)*
+[👉 View on Netlify](https://wewantwaste-redesign.netlify.app/)  
 
 ---
 
