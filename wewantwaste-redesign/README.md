@@ -87,4 +87,4 @@ Displays one skip option card:
 
 Thanks for the opportunity! Looking forward to your feedback!
 
-– **Florin Asavei**
+– **Florin Asavei**     
