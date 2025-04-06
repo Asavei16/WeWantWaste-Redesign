@@ -1,26 +1,37 @@
+import React from "react";
 import PropTypes from "prop-types";
 
-function SkipCard({ skip, isSelected, onSelect }) {
-  const { size, hire_period_days, price_before_vat, vat, allowed_on_road } = skip;
-  const totalPrice = price_before_vat ? (price_before_vat * (1 + vat / 100)).toFixed(2) : "N/A";
+const SkipCard = ({ skip, isSelected, onSelect }) => {
+  const {
+    size,
+    hire_period_days,
+    price_before_vat,
+    vat,
+    allowed_on_road,
+    allows_heavy_waste
+  } = skip;
+
+  const totalPrice = price_before_vat
+    ? (price_before_vat * (1 + vat / 100)).toFixed(2)
+    : "—";
 
   return (
-    <div 
-      className={`p-4 rounded-xl border ${isSelected ? "border-blue-500 bg-gray-800" : "border-gray-700"} transition cursor-pointer`}
+    <div
+      className={`border rounded-2xl p-4 shadow-md cursor-pointer transition-transform transform hover:scale-105 ${
+        isSelected ? "border-blue-500 bg-blue-50" : "border-gray-300 bg-white"
+      }`}
       onClick={onSelect}
     >
-      <h2 className="text-xl font-semibold">🗑 {size} Yard Skip</h2>
-      <p className="text-gray-400">Hire Period: {hire_period_days} days</p>
-      <p className="text-lg font-bold text-blue-400">£{totalPrice} total</p>
-      <p className={`text-sm mt-2 ${allowed_on_road ? "text-green-400" : "text-red-400"}`}>
-        {allowed_on_road ? "✅ Allowed on Road" : "❌ Private Property Only"}
+      <h3 className="text-xl font-semibold mb-2">Skip size: {size} yd³</h3>
+      <p>Hire period: {hire_period_days} days</p>
+      <p>Price (incl. VAT): <strong>£{totalPrice}</strong></p>
+      <p className="text-sm text-gray-500 mt-2">
+        {allowed_on_road ? "✅ Allowed on road" : "❌ Not allowed on road"}<br />
+        {allows_heavy_waste ? "✅ Suitable for heavy waste" : "❌ No heavy waste"}
       </p>
-      <button className={`mt-4 w-full py-2 rounded-lg ${isSelected ? "bg-blue-500" : "bg-gray-700"}`}>
-        {isSelected ? "Selected" : "Select This Skip"}
-      </button>
     </div>
   );
-}
+};
 
 SkipCard.propTypes = {
   skip: PropTypes.object.isRequired,
